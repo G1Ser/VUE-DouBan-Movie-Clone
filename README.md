@@ -10,3 +10,4 @@ npm i vue@2 -D
 ```
 ## 2.项目内容
 查看[豆瓣电影](https://movie.douban.com/)界面，模仿该界面实现电影轮播界面和电影查看界面两个功能：
+![img](https://github.com/G1Ser/VUE-DouBan-Movie-Clone/blob/main/GIF/%E6%9F%A5%E7%9C%8B.gif)
