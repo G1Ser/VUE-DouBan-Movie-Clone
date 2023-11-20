@@ -33,4 +33,6 @@ Json-server:在该项目中，它用来模拟后端服务器，用于模拟服�
 • 前后端连接：
 
 Axios：在该项目中，它用于Live Server和Node.js发出HTTP请求，负责从Vue前端向Json-Server后端发送请求，并处理返回的数据。
+ 
 ![Simple Drawing](https://github.com/G1Ser/VUE-DouBan-Movie-Clone/blob/main/GIF/Simple%20Drawing.png "Simple Drawing")
+### 2.2. 数据表制作
