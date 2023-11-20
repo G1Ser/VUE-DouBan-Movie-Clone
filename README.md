@@ -1,11 +1,15 @@
 # 豆瓣电影界面
 本项目是基于VUE、Json-Server、HTML、CSS、JavaScript和Axios技术栈开发的豆瓣电影界面克隆。通过这个项目，我旨在学习和实践前端技术开发，了解Node.js和VUE技术的应用。
 ## 1.配置开发环境
-首先将我们的环境配置成开发环境，并且安装VUE、Json-Server和Axios：
+首先我们安装[node.js](https://nodejs.org/en),安装完成后初始化开发环境，并且安装VUE、Json-Server和Axios：
 ```javascript
+//初始化开发环境
 npm init -y
+//局部安装json-server
 npm i json-server -D
+//局部安装axios
 npm i axios -D
+//局部安装vue
 npm i vue@2 -D
 ```
 ## 2.项目内容
