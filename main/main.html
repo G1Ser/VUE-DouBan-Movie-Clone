@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>豆瓣电影</title>
+    <link rel="icon" href="../img/th.png">
+    <link rel="stylesheet" href="../css/douban.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="top">
+        <nav class="nav-bar">
+            <ul class="left">
+                <a href="#">豆瓣</a>
+                <a href="#">读书</a>
+                <a href="#">电影</a>
+                <a href="#">音乐</li></a>
+                <a href="#">同城</a>
+                <a href="#">小组</a>
+                <a href="#">阅读</a>
+                <a href="#">FM</a>
+                <a href="#">时间</a>
+                <a href="#">豆品</a>
+            </ul>
+            <ul class="right">
+                <a href="#">下载豆瓣客户端</a>
+                <a href="#">登录/注册</a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="search center">
+            <h1>豆瓣电影</h1>
+            <div>
+                <input type="text" placeholder="搜索电影">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        <div class="show center">
+            <h3>正在热映</h3>
+            <ul>
+                <li v-for="movie in currentMovies" :key="movie.id">
+                    <img :src="movie.poster" :alt="movie.name"><br>
+                    <button>选座购票</button>
+                </li>
+            </ul>
+        </div>
+        <div class="view center">
+            <ul class="view-type">
+                <!-- href="javascript:void(0)"可以避免刷新浏览器 -->
+                <li v-for="type in types" :key="type.id"><a href="javascript:void(0)"
+                        @click="selectType(type.type)">{{type.type}}</a></li>
+            </ul>
+            <br>
+            <ul class="view-movie">
+                <li v-for="movie in filtermovie" :key="movie.id">
+                    <div class="content">
+                        <img :src="movie.poster" :alt="movie.name" @mouseover="showDetails(movie,$event)"
+                            @mouseleave="hideDetails"><br>
+                        <span v-if="parseFloat(movie.rate) > 9.0" class="hot">hot</span>
+                        <span v-if="movie.time === new Date().getFullYear().toString()" class="new">new</span>
+                        <span>{{movie.name}}</span><br><span>{{movie.rate}}</span>
+                    </div>
+                    <div v-if="currentMovie && currentMovie.id === movie.id" class="details-box" :style="detailboxdirection">
+                        <!-- 展示电影详细信息 -->
+                        <div class="normal">
+                            <p>{{movie.name}}<span>({{movie.time}})</span></p><br>
+                            <span class="basic">{{movie.duration | minute}}</span><span
+                                class="basic">{{movie.type}}</span><br><br>
+                            <span class="basic">{{movie.director | postfix}}</span><span
+                                v-for="(actor , index) in movie.actor.split('，')" :key="index"
+                                class="basic">{{actor}}</span><br>
+                        </div>
+                        <div class="pane">
+                            <span>{{movie.introduce}}</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <footer class="bottom">
+        <span class="center">© 2023 Chauncey's Personal Project. All rights reserved.</span>
+    </footer>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="../js/douban.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

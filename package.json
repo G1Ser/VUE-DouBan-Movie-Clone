@@ -1,0 +1,17 @@
+{
+  "name": "day26",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "json-server -w ./db/data.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^1.6.2",
+    "json-server": "^0.17.4",
+    "vue": "^2.7.15"
+  }
+}

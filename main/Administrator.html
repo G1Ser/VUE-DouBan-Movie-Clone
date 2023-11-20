@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>豆瓣管理者</title>
+    <link rel="shortcut icon" href="../img/用户.ico">
+    <link rel="stylesheet" href="../css/administrator.css">
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="admin">
+        <div class="subit-box">
+            电影编号：<input type="" v-model="id">
+            电影名称：<input type="text" v-model="name">
+            电影海报：<input type="text" v-model="poster">
+            导演：<input type="text" v-model="director">
+            演员：<input type="text" v-model="actor" placeholder="多个演员请用，分隔">
+            上映时间：<input type="text" v-model="time">
+            电影时长：<input type="text" v-model="duration">
+            电影类型：<select v-model="type">
+                <option value="" disabled selected>--请选择电影类型--</option>
+                <option value="爱情">爱情</option>
+                <option value="动画">动画</option>
+                <option value="动作">动作</option>
+                <option value="犯罪">犯罪</option>
+                <option value="剧情">剧情</option>
+                <option value="科幻">科幻</option>
+                <option value="悬疑">悬疑</option>
+            </select>
+            电影评分：<input type="text" v-model="rate">
+            电影简介：<input type="text" v-model="introduce">
+            <br>
+            <button @click="sumbit":disabled="!isFormValid">提交信息</button>
+        </div>
+        <div class="information-box">
+            <table>
+                <tr>
+                    <th>序号</th>
+                    <th>电影名称</th>
+                    <th>上映时间</th>
+                    <th>电影类型</th>
+                    <th>操作</th>
+                </tr>
+                <tr v-for="(movie,index) in movies":key="movie.id">
+                    <td>{{index+1}}</td>
+                    <td>{{movie.name}}</td>
+                    <td>{{movie.time}}</td>
+                    <td>{{movie.type}}</td>
+                    <td><button @click="deleteMovie(movie.id)">下架该电影</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>
