@@ -86,6 +86,7 @@ new Vue({
 ```
 
 • 电影查看效果：
+
 通过绑定点击事件，将点击的类型与电影数据的类型进行匹配，展示与点击同类型的电影列表。
 ```javascript
 <ul class="view-type">
@@ -107,5 +108,66 @@ if (this.currentType) {
   return this.movies.filter(movie => movie.type === this.currentType);
   }
 return this.movies;
+}
+```
+
+绑定鼠标停留事件，使鼠标停留在电影海报之后会出现该电影的详细信息，并且判断展示框的宽度，若其超过了可视区域，则让详细信息框向左展示。
+```javascript
+<div class="content">
+  <img :src="movie.poster" :alt="movie.name" @mouseover="showDetails(movie,$event)"@mouseleave="hideDetails">
+  <br>
+  //电影评分大于9则添加hot标签
+  <span v-if="parseFloat(movie.rate) > 9.0" class="hot">hot</span>
+  //电影是今年上映的则添加new标签
+  <span v-if="movie.time === new Date().getFullYear().toString()" class="new">new</span>
+  <span>{{movie.name}}</span><br><span>{{movie.rate}}</span>
+</div>
+<div v-if="currentMovie && currentMovie.id === movie.id" class="details-box" :style="detailboxdirection">
+<!-- 展示电影详细信息 -->
+</div>
+```
+```javascript
+showDetails(movie, event) {
+  //获取可视区域的长度
+  const width = document.documentElement.clientWidth;
+  //获取鼠标的X坐标
+  const mouseX = event.clientX;
+  //图片的宽度
+  const ImgWidth = 170;
+  //信息框的宽度
+  const BoxWidth = 350;
+  this.direction = mouseX+ImgWidth+BoxWidth>width?false:true;
+  clearTimeout(this.time);
+  this.time = setTimeout(() => {
+    this.currentMovie = movie;
+    }, 500);
+  },
+hideDetails() {
+  clearTimeout(this.time);
+  this.currentMovie = null;
+}
+detailboxdirection(){
+  if(this.direction){
+    return {left : "100%"};
+    }else{
+  return {right:"100%"};
+    }
+```
+```javascript
+/*设置content和details-box css样式，使电影详情页紧挨着电影海报显示*/
+.content {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    width: 200px;
+    height: 300px;
+}
+.details-box {
+    position: absolute;
+    top: 0;
+    /* left: 100%; */
+    width: 350px;
+    z-index: 999;
+    border: 1px solid black;
 }
 ```
