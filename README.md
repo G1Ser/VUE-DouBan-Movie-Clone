@@ -88,7 +88,7 @@ new Vue({
 • 电影查看效果：
 通过绑定点击事件，将点击的类型与电影数据的类型进行匹配，展示与点击同类型的电影列表。
 ```javascript
- <ul class="view-type">
+<ul class="view-type">
   <!-- href="javascript:void(0)"可以避免刷新浏览器 -->
   <li v-for="type in types" :key="type.id"><a href="javascript:void(0)"@click="selectType(type.type)">{{type.type}}</a></li>
 </ul>
@@ -96,4 +96,13 @@ new Vue({
 <ul class="view-movie">
   <li v-for="movie in filtermovie" :key="movie.id">
 </ul>
+```
+```javascript
+filtermovie() {
+//过滤相同类型的电影
+if (this.currentType) {
+  return this.movies.filter(movie => movie.type === this.currentType);
+  }
+return this.movies;
+}
 ```
