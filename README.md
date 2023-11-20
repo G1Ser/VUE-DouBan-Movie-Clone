@@ -98,6 +98,9 @@ new Vue({
 </ul>
 ```
 ```javascript
+selectType(type) {
+  this.currentType = type;
+},
 filtermovie() {
 //过滤相同类型的电影
 if (this.currentType) {
