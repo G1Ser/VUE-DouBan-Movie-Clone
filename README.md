@@ -18,11 +18,15 @@ npm i vue@2 -D
  
 ![电影查看](https://github.com/G1Ser/VUE-DouBan-Movie-Clone/blob/main/GIF/%E6%9F%A5%E7%9C%8B.gif "电影查看")
 ### 2.1.项目部署
-&bull前端技术：
+·前端技术：
+
 HTML：用于部署网页内容和结构。
+
 CSS：用于美化网页，设置元素的属性等视觉效果。
+
 Vue:在该项目中，Vue负责管理和呈现用户界面，实现管理员对电影数据的添加、下架操作、电影轮播和电影查看界面的功能。
-&bull后端模拟：
+
+·后端模拟：
 Json-server:在该项目中，它用来模拟后端服务器，用于模拟服务器对本地的响应。
-&bull前后端连接：
+·前后端连接：
 Axios：在该项目中，它用于Live Server和Node.js发出HTTP请求，负责从Vue前端向Json-Server后端发送请求，并处理返回的数据。
