@@ -40,6 +40,47 @@ Axios：在该项目中，它用于Live Server和Node.js发出HTTP请求，负�
 //打开数据源
 npm run dev
 ```
-管理员通过系统将电影名称、电影海报、电影导演、电影演员、上映时间、电影时长、电影类型、电影评分和电影简介录入数据库中，也可以通过下架电影来移除该电影数据。
+管理员通过系统将电影名称、电影海报、电影导演、电影演员、上映时间、电影时长、电影类型、电影评分和电影简介录入数据库中，也可以通过下架电影来移除该电影数据,相关数据存放在.db/movies_information.xlsx里。
 
 ![数据管理](https://github.com/G1Ser/VUE-DouBan-Movie-Clone/blob/main/GIF/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86.gif "数据管理")
+
+### 2.3.用户界面设计
+• 轮播效果：
+基于Axios对Json-Server发送GET请求获得数据，通过设置切片和定时器来进行实现
+```javascript
+new Vue({
+    el: ".show",
+    data: {
+        //从数据库加载电影数据
+        movies: [],
+        //当前显示电影的索引
+        currentIndex: 0
+    },
+    computed: {
+        //每次仅展示五部电影
+        currentMovies() {
+            let endIndex = this.currentIndex + 5;
+            //如果不足五部电影就调整数组长度
+            endIndex = endIndex > this.movies.length ? this.movies.length : endIndex;
+            return this.movies.slice(this.currentIndex, endIndex);
+        }
+    },
+    mounted() {
+        //使用Axios加载数据到Movies
+        axios.get("http://localhost:3000/movies")
+            .then(response => {
+                this.movies = response.data;
+            })
+            .catch(error => {
+                console.error("Error loading data:", error)
+            });
+        setInterval(()=>{
+            //循环展示电影
+            this.currentIndex += 5;
+            if(this.currentIndex >= this.movies.length){
+                this.currentIndex = 0;
+            }
+        },5000);
+    }
+})
+```
