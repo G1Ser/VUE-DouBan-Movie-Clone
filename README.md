@@ -13,3 +13,4 @@ npm i vue@2 -D
 ![电影轮播](https://github.com/G1Ser/VUE-DouBan-Movie-Clone/blob/main/GIF/%E8%BD%AE%E6%92%AD.gif "电影轮播")
  
 ![电影查看](https://github.com/G1Ser/VUE-DouBan-Movie-Clone/blob/main/GIF/%E6%9F%A5%E7%9C%8B.gif "电影查看")
+### 2.1.
