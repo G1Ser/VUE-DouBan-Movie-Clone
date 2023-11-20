@@ -171,3 +171,5 @@ detailboxdirection(){
     border: 1px solid black;
 }
 ```
+## 3.项目成果
+![项目成果](https://github.com/G1Ser/VUE-DouBan-Movie-Clone/blob/main/GIF/%E6%88%90%E6%9E%9C%E5%B1%95%E7%A4%BA.gif "项目成果")
