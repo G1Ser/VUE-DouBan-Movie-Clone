@@ -4,4 +4,4 @@
 首先将我们的环境配置成开发环境，并且安装VUE、Json-Server和Axios：
 1.配置开发环境
 ```bash
-npm init -y```
+npm init -y
