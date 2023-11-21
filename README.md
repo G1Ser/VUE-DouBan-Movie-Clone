@@ -38,6 +38,15 @@ Axios：在该项目中，它用于Live Server和Node.js发出HTTP请求，负�
 ### 2.2. 模拟数据源
 ```
 //打开数据源
+npx json-server -w .db/data.json
+```
+或
+```
+//设置package.json里面的调试文件
+  "scripts": {
+    "dev": "json-server -w ./db/data.json"
+  }
+//打开数据源
 npm run dev
 ```
 管理员通过系统将电影名称、电影海报、电影导演、电影演员、上映时间、电影时长、电影类型、电影评分和电影简介录入数据库中，也可以通过下架电影来移除该电影数据,相关数据存放在.db/movies_information.xlsx里。
